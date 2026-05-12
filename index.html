@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wine Quality Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            background:linear-gradient(135deg,#141e30,#243b55);
+            color:white;
+            min-height:100vh;
+        }
+        .glass{
+            background:rgba(255,255,255,0.08);
+            backdrop-filter:blur(10px);
+            border-radius:20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="glass p-5">
+        <h1 class="text-center mb-4">Wine Quality Analyzer</h1>
+
+        <form action="/predict" method="POST">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="number" step="any" name="fixed_acidity" class="form-control mb-2" placeholder="Fixed Acidity" required>
+                    <input type="number" step="any" name="volatile_acidity" class="form-control mb-2" placeholder="Volatile Acidity" required>
+                    <input type="number" step="any" name="citric_acid" class="form-control mb-2" placeholder="Citric Acid" required>
+                    <input type="number" step="any" name="residual_sugar" class="form-control mb-2" placeholder="Residual Sugar" required>
+                    <input type="number" step="any" name="chlorides" class="form-control mb-2" placeholder="Chlorides" required>
+                    <input type="number" step="any" name="free_sulfur_dioxide" class="form-control mb-2" placeholder="Free Sulfur Dioxide" required>
+                </div>
+
+                <div class="col-md-6">
+                    <input type="number" step="any" name="total_sulfur_dioxide" class="form-control mb-2" placeholder="Total Sulfur Dioxide" required>
+                    <input type="number" step="any" name="density" class="form-control mb-2" placeholder="Density" required>
+                    <input type="number" step="any" name="ph" class="form-control mb-2" placeholder="pH" required>
+                    <input type="number" step="any" name="sulphates" class="form-control mb-2" placeholder="Sulphates" required>
+                    <input type="number" step="any" name="alcohol" class="form-control mb-2" placeholder="Alcohol" required>
+
+                    <button class="btn btn-primary w-100 mt-3">
+                        Predict Wine Quality
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        {% if prediction %}
+        <div class="alert alert-success mt-4">
+            <h3>Prediction: {{ prediction }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
